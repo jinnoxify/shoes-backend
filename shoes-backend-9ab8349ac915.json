@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "shoes-backend",
+  "private_key_id": "9ab8349ac915c6977c00dec2bc849f165b443139",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDmH6Vy0BDgRQzC\nJiqtr5+ORJDzJDZ7hl/oyo3UNizoVH+c7fbA2g4A+0OeW6/GbP0wZurBd6/BRapL\n6/HDyCyyIoqCtWprQuurSsjPno1stgqRkLuoURkMgMCjubWvS1K9HxsWarddb7/H\nonqQGxdpJdQWYp605lF2zOCh3j40JUbRIEs8RvfowyXsB5QuQbO+XxEEjMpLUj55\n7F1zqedn+ftUdW2fhR5F5lMFjMemVqRIRvvV8DQ6Zwj+o8at6m9+a0l7LvboIKj6\ni3sNJk8zk0srOcNHH6KJ75r5MqeJOa172xIVjGLCNkMYixi2dNFfamF86hKwc9ZP\nwRlym05dAgMBAAECggEADICOpAiyygRmV4vsSKhgckG+YD9I6HgZ8NNEVlGlKfAh\nSLzS6ZJPLXV5LHrNt2mHbeBBg8ZFWao3wM0uQtU2vGzM+qHxiKdHl3RGKaVzCINx\nWowy7ceOJVQ/YwW9XaspcRXmClc85AoksKtenkKiiHdiKN8twSU8KsihsZmZ5oo/\nhy3SrlOA5U72meiR3h3s3UGb+bUr8su41+NOhEfp29G7BIHmTKg2a8NGJhVOI/cp\nyWIuavXhnpxKeHNY0gGxLmoKICFAFOlhSQ9T8h0h9YonHGDJt3agLhyvnU5fyUpf\n5DO45cP2yyCtYtXDXlrJPtSERWLmT3GZkjpexCbxwQKBgQD5ZYeKVz3S+UlY6KLO\nPXZWfqz8NcRXH0rsDYSwyWC8nu8qQXs4ncSY2NGKHJg9WbBT19lhYodg+pUBTrMH\nzxiLATkOL97P50+kH5XgjU0hYO+s/45i3/2VRypH/wkC5zJ/Sp17W1pZVqJM7Tnf\nusQ0ehX7r8rc5C8v0pE3eucLIQKBgQDsN3raaJBDr6y2aPCruDlWMIbRF1HNu34p\npfM9P/NhYGvbhLqpTREB9Wzwye8GF35kPogmEgkMckPFIF6Edk/0qK4KY9cFhaeN\n79/IDWC9wRZlOTrYozeA7kxDoIpFI0ru4P3zOkJjyr1gAVEi1Fl2fiuWTgbAAEIh\n/VpgQiQ3vQKBgAYiZS8V7kNeNlulfTutb1e5Te/2Mpoh/unHe1gN2/9HuYJEkg9W\nchuAWccX5Pa9WgT17jbjAYl1IG0jzmuGwIfKw+iBbO2YNvFGhZ08XIVRqROMRahQ\n8h/V3EhhEYusvCU9ZJpAKPzBkMRroVzLb0ALMLc8H7VHN5HpkADZWQ2BAoGAY7XH\nlgotW2T8csM5VEMfcNJrFjfRwBY02z/BvUkRYzlgTflpEa4GT91ZbwrOarPgFlCP\nCAL07twM31kajK+kcJIDZT9ftGUGpVNsEvYSsAahfXj67hd3hmUQrDtIIocTSmKO\nz+z3uUgLSEtGBH2+hdYccAXfs4xoXhCj5Z4Fy8ECgYAtbSZ+NwlKXMe8/G/EGNFF\neG3kWpPj+IUvQfBdlgC4CwCYr1OvB8sdG4jb0f2DK6Z/s1uTu+EvKhvFEhW/jUwx\n8ZpLewz0bpCkrHeF/lHKjfenRMaoJEdOBMkUaapWssbcqxK4CTfvgnCdsJH5mNOS\nuttlaVy3QqfqTFSaDrDocg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "shoes-backend@appspot.gserviceaccount.com",
+  "client_id": "117684274608665109929",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/shoes-backend%40appspot.gserviceaccount.com"
+}
