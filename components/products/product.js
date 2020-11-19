@@ -10,8 +10,8 @@ let setProduct = productDocRef.set({
   colorId: colorIdValue,
   description: "",
   brandId: brandIdValue,
-  startingFrom: "",
+  startingFrom: Number,
   url: "",
-  SKU: Number,
+  sku: Number,
   slugName: ""
 });
