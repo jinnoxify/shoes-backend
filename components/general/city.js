@@ -7,5 +7,7 @@ let setCity = cityDocRef.set({
   name: "",
   stateId: stateIdValue,
   latitude: Number,
-  longitude: Number
+  longitude: Number,
 });
+
+export default setCity;

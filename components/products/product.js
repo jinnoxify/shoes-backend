@@ -13,5 +13,7 @@ let setProduct = productDocRef.set({
   startingFrom: Number,
   url: "",
   sku: Number,
-  slugName: ""
+  slugName: "",
 });
+
+export default setProduct;

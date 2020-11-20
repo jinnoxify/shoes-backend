@@ -4,5 +4,7 @@ let setProvider = providerDocRef.set({
   id: "",
   name: "",
   urlBackend: "",
-  url: ""
+  url: "",
 });
+
+export default setProvider;

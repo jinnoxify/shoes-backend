@@ -7,5 +7,7 @@ let setBanner = bannerDocRef.set({
   descriptionTwo: "",
   link: "",
   isActive: Boolean,
-  position: ""
+  position: "",
 });
+
+export default setBanner;

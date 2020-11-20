@@ -10,5 +10,7 @@ let setAddress = addressDocRef.set({
   addressLine2: "",
   cityId: cityIdValue,
   stateId: stateIdValue,
-  customerId: customerIdValue
+  customerId: customerIdValue,
 });
+
+export default setAddress;

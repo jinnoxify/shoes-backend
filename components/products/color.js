@@ -3,5 +3,7 @@ let colorDocRef = db.collection("products").doc("color");
 let setColor = colorDocRef.set({
   id: "",
   name: "",
-  hexcode: ""
+  hexcode: "",
 });
+
+export default setColor;

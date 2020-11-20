@@ -10,5 +10,7 @@ let setProductSize = productSizeDocRef.set({
   isAvailable: Boolean,
   price: Number,
   providerId: providerIdValue,
-  productId: productIdValue
+  productId: productIdValue,
 });
+
+export default setProductSize;

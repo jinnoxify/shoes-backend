@@ -14,5 +14,7 @@ let setOrder = orderDocRef.set({
   orderStatusId: orderStatusIdValue,
   addressId: addressIdValue,
   customerId: customerIdValue,
-  mercadoPagoToken: ""
+  mercadoPagoToken: "",
 });
+
+export default setOrder;
