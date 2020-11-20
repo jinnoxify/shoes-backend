@@ -20,16 +20,16 @@ const jobProductList = async () => {
       params: {
         query: "shoes",
         currentPage: page,
-        pageSize: PAGESIZE
-      }
+        pageSize: PAGESIZE,
+      },
     });
     const {
       pagination: { totalPages },
-      products
+      products,
     } = response.data;
     pages = totalPages;
     await Promise.all(
-      (products || []).map(async product => {
+      (products || []).map(async (product) => {
         const { url, name } = product;
         try {
           if (!productName.has(name)) {
@@ -60,39 +60,40 @@ const jobProductList = async () => {
   //const tmpArray = ["https://www.eastbay.com/api/products/pdp/53558611", "https://www.eastbay.com/api/products/pdp/24300657", "https://www.eastbay.com/api/products/pdp/55088062", "https://www.eastbay.com/api/products/pdp/D3463101", "https://www.eastbay.com/api/products/pdp/23498067", "https://www.eastbay.com/api/products/pdp/T5342007", "https://www.eastbay.com/api/products/pdp/54724066", "https://www.eastbay.com/api/products/pdp/52542087", "https://www.eastbay.com/api/products/pdp/D3463018", "https://www.eastbay.com/api/products/pdp/K5692600"]
   const DELAY = 500;
   const getProduct = async (url, indexProduct) => {
-    return new Promise(resolve =>
+    return new Promise((resolve) =>
       setTimeout(async () => {
         try {
           const response = await axios.get(url);
           const product = response.data;
           /* define the product entity's attributes */
           const {
+            id,
             brand,
             name,
             description,
             images,
             sellableUnits,
-            variantAttributes
+            variantAttributes,
           } = product;
           //Find the brand
-          let brandModelData = await BRANDLIST.find(brandData => {
+          let brandModelData = await BRANDLIST.find((brandData) => {
             return brandData.name === brand.trim().toLowerCase();
           });
           //If brand does not exist, create one
           if (!brandModelData) {
             let brandModelData = await brandModel.create({
-              name: brand.trim().toLowerCase()
+              name: brand.trim().toLowerCase(),
             });
           }
           // All images. Variants are the different images sizes for responsiveness
           const imagesList = new Set();
           await Promise.all(
-            (images || []).map(async variantProduct => {
+            (images || []).map(async (variantProduct) => {
               const { variations } = variantProduct;
               /*Each variant consists on the format type and the url of the image. We only take formats equal to zoom,
 					 and add the urls to our imageList */
               await Promise.all(
-                (variations || []).map(async variant => {
+                (variations || []).map(async (variant) => {
                   const { format, url } = variant;
                   if (format === "zoom") {
                     imagesList.add(url);
@@ -105,7 +106,7 @@ const jobProductList = async () => {
           const slugName = urlSlug(name);
           const shoesModelData = await shoesModel.findOneAndUpdate(
             {
-              slugName
+              slugName,
             },
             {
               brandId: brandModelData._id,
@@ -114,43 +115,43 @@ const jobProductList = async () => {
               description: description,
               $addToSet: {
                 photos: {
-                  $each: [...imagesList]
-                }
-              }
+                  $each: [...imagesList],
+                },
+              },
             },
             {
               omitUndefined: true,
               upsert: true,
               new: true,
-              lean: true
+              lean: true,
             }
           );
           //Update variants
           await Promise.all(
-            (sellableUnits || []).map(async variantProduct => {
+            (sellableUnits || []).map(async (variantProduct) => {
               const { attributes, price } = variantProduct;
               // Find style and size of each variant and assign them to it if it exists
-              const styleObject = (attributes || []).find(elem => {
+              const styleObject = (attributes || []).find((elem) => {
                 return elem.type === "style";
               });
-              const sizeObject = (attributes || []).find(elem => {
+              const sizeObject = (attributes || []).find((elem) => {
                 return elem.type === "size";
               });
               if (styleObject.id && styleObject.value && sizeObject.value) {
                 const variantAttribute = (variantAttributes || []).find(
-                  elem => {
+                  (elem) => {
                     return elem.code === styleObject.id;
                   }
                 );
                 if (variantAttribute) {
-                  const imagesVariant = (images || []).find(img => {
+                  const imagesVariant = (images || []).find((img) => {
                     return img.code === styleObject.id;
                   });
                   let imageVariant = null;
                   if (imagesVariant && imagesVariant.variations) {
                     const imageVariantFound = (
                       imagesVariant.variations || []
-                    ).find(img => {
+                    ).find((img) => {
                       return img.format === "zoom";
                     });
                     // Find only images with format zoom and get the urls
@@ -167,22 +168,22 @@ const jobProductList = async () => {
                   const shoesVariantModelData = await variantShoesModel.findOneAndUpdate(
                     {
                       name: styleObject.value,
-                      shoesId: shoesModelData._id
+                      shoesId: shoesModelData._id,
                     },
                     {
                       name: styleObject.value,
                       shoesId: shoesModelData._id,
                       $addToSet: {
                         photos: {
-                          $each: [...imagesVariantList]
-                        }
-                      }
+                          $each: [...imagesVariantList],
+                        },
+                      },
                     },
                     {
                       omitUndefined: true,
                       upsert: true,
                       new: true,
-                      lean: true
+                      lean: true,
                     }
                   );
                   //prices
@@ -191,20 +192,20 @@ const jobProductList = async () => {
                   bulkOptions
                     .find({
                       name: styleObject.value,
-                      shoesId: shoesModelData._id
+                      shoesId: shoesModelData._id,
                     })
                     .updateOne({
                       $pull: {
                         variations: {
                           market: "eastbay",
-                          size: sizeObject.value
-                        }
-                      }
+                          size: sizeObject.value,
+                        },
+                      },
                     });
                   bulkOptions
                     .find({
                       name: styleObject.value,
-                      shoesId: shoesModelData._id
+                      shoesId: shoesModelData._id,
                     })
                     .updateOne({
                       $addToSet: {
@@ -215,11 +216,11 @@ const jobProductList = async () => {
                               size: sizeObject.value,
                               normalPrice: variantProduct.price.originalPrice,
                               price: variantProduct.price.value,
-                              url: urlPage
-                            }
-                          ]
-                        }
-                      }
+                              url: urlPage,
+                            },
+                          ],
+                        },
+                      },
                     });
                   await bulkOptions.execute();
                 }
@@ -237,18 +238,6 @@ const jobProductList = async () => {
     );
   };
   // Cloud firestore config
-  let docRef = db.collection("products").doc(name);
-  let setShoesModel = docRef.set({
-    brandId: brandModelData._id,
-    name: name.trim().toLowerCase(),
-    slugName,
-    description: description,
-    $addToSet: {
-      photos: {
-        $each: [...imagesList]
-      }
-    }
-  });
   await Promise.all(
     Array.from(result).map(async (url, index) => {
       await getProduct(url, index);
@@ -263,5 +252,5 @@ const geProductsList = async (options = {}) => {
   return [];
 };
 module.exports = {
-  geProductsList
+  geProductsList,
 };
