@@ -2,7 +2,8 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
-const port = 3002;
+const admin = require("./config/database");
+require("dotenv").config();
 
 const app = express();
 
@@ -17,5 +18,9 @@ const fetchRouter = require("./components/fetch/routes");
 
 app.use("/", indexRouter);
 app.use("/fetch", fetchRouter);
+
+admin.initializeApp({
+  credential: admin.credential.applicationDefault(),
+});
 
 module.exports = app;

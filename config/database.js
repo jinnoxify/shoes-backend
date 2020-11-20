@@ -5,13 +5,13 @@ const firebaseConfig = {
   projectId: "shoes-backend",
   storageBucket: "shoes-backend.appspot.com",
   messagingSenderId: "232562485617",
-  appId: "1:232562485617:web:6d208e3b36fde570bfaed0"
+  appId: "1:232562485617:web:6d208e3b36fde570bfaed0",
 };
+
+const firebase = require("firebase/app");
+
+firebase.initializeApp(firebaseConfig);
 
 const admin = require("firebase-admin");
 
-admin.initializeApp({
-  credential: admin.credential.applicationDefault()
-});
-
-const db = admin.firestore();
+module.exports = admin;
